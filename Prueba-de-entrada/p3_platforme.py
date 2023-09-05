@@ -2,9 +2,7 @@
 # https://dmoj.ca/problem/crci07p1
 
 def platforme(inputStr):
-    obtain_coordenates(inputStr)
-    number = input['number']
-    unsorted_coordenates = input['coordenates'].copy()
+    unsorted_coordenates = obtain_coordenates(inputStr)
     coordenates = sorted(unsorted_coordenates, key = lambda x: x[0])
 
     pillars_length = 0
@@ -51,8 +49,9 @@ def platforme(inputStr):
 
     return pillars_length
 def obtain_coordenates(str):
-    ''.split()
+    coordenates = []
     lines = [line for line in str.split('\n')]
-    n = l[0]
-    for line in lines:
-        int(line.split(' '))
+    for line in lines[1:]:
+        xyy = [int(s) for s in line.split(' ')]
+        coordenates.append(xyy)
+    return coordenates
