@@ -1,7 +1,9 @@
+# Modismos de Ruby <!-- omit in toc -->
+
 - IDE: RubyMine
 - Ruby POO
   - Encapsulamiento
-  - Polimorfismo
+  - Polimorfismo (duck typing)
   - Herencia
 
 - Modo poético (semántica)

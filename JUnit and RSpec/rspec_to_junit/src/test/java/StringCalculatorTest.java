@@ -26,7 +26,7 @@ class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @DisplayName("given a single number in a string, it returns the number")
+    @DisplayName("given a single number in a string, returns the number")
     @MethodSource
     void singleNumber(String input, int expected) {
         int result = calculator.add(input);
@@ -39,4 +39,17 @@ class StringCalculatorTest {
         );
     }
 
+    @ParameterizedTest
+    @DisplayName("given two numbers in a string, returns the sum")
+    @MethodSource
+    void twoNumbers(String input, int expected) {
+        int result = calculator.add(input);
+        assertEquals(expected, result);
+    }
+    static Stream<Arguments> twoNumbers() {
+        return Stream.of(
+                Arguments.of("2,4", 6),
+                Arguments.of("17,100", 117)
+        );
+    }
 }
