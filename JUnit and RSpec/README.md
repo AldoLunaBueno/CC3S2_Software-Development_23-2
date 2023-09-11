@@ -27,3 +27,11 @@ JUnit5 Assumptions
 JUnit5 Nested
 
 ![](sources/2023-09-09-19-15-13.png)
+
+## RSpec
+
+Obtenemos un error porque el método no está definido:
+
+![](sources/2023-09-11-08-32-08.png)
+
+![](sources/2023-09-11-08-39-29.png)
