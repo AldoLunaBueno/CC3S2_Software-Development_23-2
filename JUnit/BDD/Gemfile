@@ -1,0 +1,10 @@
+# Gemfile
+source "https://rubygems.org"
+
+gem "rspec"
+
+# Deprecated:
+# bundle install --path .bundle
+
+# Instead do:
+# bundle config set --local path '.bundle'
