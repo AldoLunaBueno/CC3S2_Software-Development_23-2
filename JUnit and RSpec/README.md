@@ -35,3 +35,15 @@ Obtenemos un error porque el método no está definido:
 ![](sources/2023-09-11-08-32-08.png)
 
 ![](sources/2023-09-11-08-39-29.png)
+
+![](sources/2023-09-11-09-04-05.png)
+
+![](sources/2023-09-11-09-01-37.png)
+
+## From RSpec to JUnit5
+
+![](sources/2023-09-11-09-15-45.png)
+
+![](sources/2023-09-11-09-16-41.png)
+
+![](sources/2023-09-11-09-23-36.png)

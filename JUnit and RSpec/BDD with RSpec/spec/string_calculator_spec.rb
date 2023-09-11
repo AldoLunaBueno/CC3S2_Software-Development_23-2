@@ -40,7 +40,7 @@ describe StringCalculator do
             end
             context "given '17,100'" do
                 it "returns 117" do
-                    expect(StringCalculator.add("17,100")).eql(117)
+                    expect(StringCalculator.add("17,100")).to eql(117)
                 end
             end
         end
