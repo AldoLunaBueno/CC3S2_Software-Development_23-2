@@ -85,24 +85,23 @@ Una vez más, inicia `nc -l 8081` para escuchar en el puerto `8081`.
 Crea y guarda (idealmente con extensión .html) el siguiente archivo:
 
 ```
- <!DOCTYPE html>
-  <html>
-  <head>
-    </head>
-    <body> <form method="post" action="Url-servidor-falso">
-      <label>Email:</label>
-       <input type="text" name="email">
-        <label>Password:</label>
-        <input type="password" name="password">
-        <input type="hidden" name="secret_info" value="secret_value">
-        <input type="submit" name="login" value="Log In!">
-      </form>
-    </body>
-  </html> 
+<!DOCTYPE html>
+<html>
+<head>
+  </head>
+  <body> <form method="post" action="Url-servidor-falso">
+    <label>Email:</label>
+      <input type="text" name="email">
+      <label>Password:</label>
+      <input type="password" name="password">
+      <input type="hidden" name="secret_info" value="secret_value">
+      <input type="submit" name="login" value="Log In!">
+    </form>
+  </body>
+</html> 
 ```
 
-**Pregunta:** Cuando se envía un formulario HTML, se genera una solicitud HTTP `POST` desde el navegador. Para llegar a tu servidor falso, 
-¿con qué URL deberías reemplazar `Url-servidor-falso` en el archivo anterior? 
+**Pregunta:** Cuando se envía un formulario HTML, se genera una solicitud HTTP `POST` desde el navegador. Para llegar a tu servidor falso, ¿con qué URL deberías reemplazar `Url-servidor-falso` en el archivo anterior? 
 
 Modifica el archivo, ábrelo en el navegador web de tu computadora, completa algunos valores en el formulario y envíalo. Ahora ve a tu terminal y mira la ventana donde `nc` está escuchando. 
 
