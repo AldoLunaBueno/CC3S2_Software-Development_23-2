@@ -79,9 +79,17 @@ El código que obtenemos en el encabezado es 404, que indica que la información
 
 Tanto el encabezado `4xx` como el `5xx` indican condiciones de error. ¿Cuál es la principal diferencia entre `4xx` y `5xx`?.
 
+**Respuesta**
+
 Ambas familias de errores indican que hay un problema que impide que el servidor envíe una respuesta exitosa. La diferencia es de qué lado viene el error. El código `4xx` indica que el problema está en la solicitud que hizo el cliente, mientras que el código `5xx` indica que el error se produjo en el servidor web al que enviamos la solicitud.
 
+Pensando en la anterior pregunta, el código obtenido 404 es coherente con esto que acabamos de explicar, ya que el problema es que estamos solicitando un recurso inexistente, es decir, el problema viene del lado del cliente, de la solicitud que envía.
+
 ## ¿Qué es un cuerpo de Request?
+
+
+
+## HTTP sin estados y cookies
 
 
 
