@@ -188,7 +188,33 @@ Donde %40 representa @
 
 ## HTTP sin estados y cookies
 
-**Pregunta:** Prueba las dos primeras operaciones `GET` anteriores. El cuerpo de la respuesta para la primera debe ser `"Logged in: false"` y para la segunda `"Login cookie set"`.
+Usaremos la aplicación que se encuentra en http://esaas-cookie-demo.herokuapp.com
+
+**Pregunta:** Prueba las dos primeras operaciones `GET` anteriores ("GET /" y "GET /login"). El cuerpo de la respuesta para la primera debe ser `"Logged in: false"` y para la segunda `"Login cookie set"`.
 ¿Cuáles son las diferencias en los encabezados de respuesta que indican que la segunda operación está configurando una cookie? (Sugerencia: usa `curl -v`, que mostrará tanto los encabezados de solicitud como los encabezados y el cuerpo de la respuesta, junto con otra información de depuración. `curl --help` imprimirá una ayuda voluminosa para usar `cURL` y `man curl` mostrará la página del manual de Unix  para cURL en la mayoría de los sistemas.)
 
-Las cookies puedesn configurarse como seguras, lo que significa que solo se transmiten a travpes de
+Las cookies pueden configurarse como seguras, lo que significa que solo se transmiten a través de
+
+Como se nos pide, probamos las dos operaciones y logramos obtener el cuerpo de respuesta esperado en ambas, resaltado a continuación:
+
+![](sources/2023-09-25-16-25-53.png)
+
+![](sources/2023-09-25-16-27-21.png)
+
+La diferencia en los encabezados está en la línea de la operación GET. En el primero es _GET / HTTP/1.1_ (manda a la raíz) y en el segundo es _GET /login HTTP/1.1_
+
+Este comportamiento se puede analizar desde el código de la propia aplicación:
+
+![](sources/2023-09-25-16-37-56.png)
+
+**Pregunta:** Prueba las dos primeras operaciones `GET` anteriores. El cuerpo de la respuesta para la primera debe ser `"Logged in: false"` y para la segunda `"Login cookie set"`. 
+¿Cuáles son las diferencias en los encabezados de respuesta que indican que la segunda operación está configurando una cookie? (Sugerencia: usa `curl -v`, que mostrará tanto los encabezados de solicitud como los encabezados y el cuerpo de la respuesta, junto con otra información de depuración. `curl --help` imprimirá una ayuda voluminosa para usar `cURL` y `man curl` mostrará la página del manual de Unix  para cURL en la mayoría de los sistemas.) 
+
+
+
+**Pregunta:** Bien, ahora supuestamente `"logged in"` porque el servidor configuró una cookie que indica esto. Sin embargo, si intentaa `GET /` nuevamente, seguirá diciendo `"Logged: false"`. 
+¿Qué está sucediendo? (Sugerencia: `usa curl -v` y observa los encabezados de solicitud del cliente). 
+
+
+
+
