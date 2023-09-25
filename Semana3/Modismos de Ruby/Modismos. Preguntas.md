@@ -1,6 +1,13 @@
-# Modismos en Ruby. Preguntas
+# Modismos en Ruby. Preguntas <!-- omit in toc -->
 
-La base de código de todas las respuestas está [aquí](./Modismos_de_Ruby/lib/).
+- [Preguntas](#preguntas)
+- [Respuestas](#respuestas)
+- [Otros ejercicios](#otros-ejercicios)
+- [Respuestas](#respuestas-1)
+
+> La base de código de todas las respuestas está [aquí](./Modismos_de_Ruby/lib/).
+
+## Preguntas
 
 1. Define los principales modismos de Ruby
 2. ¿Cuáles de las siguientes expresiones en Ruby son iguales entre sí?: (a) `:f1` (b) `%q{f1}` (c) `%Q{f1}` (d) `’f1’.to_sym` (e) `:f1.to_s`
@@ -29,7 +36,10 @@ sólo una forma simplificada de escribir `i=i+f.  Diseña y pon a prueba un expe
       ```
 14. Un árbol binario ordenado es aquel en el que cada nodo tiene un valor y hasta 2 hijos, cada uno de los cuales es también un árbol binario ordenado, y el valor de cualquier elemento del subárbol izquierdo de un nodo es menor que el valor de cualquier elemento en el subárbol derecho del nodo. Definaeuna clase colección llamada `BinaryTree` que ofrezca los métodos de instancia `<<` (insertar elemento), `empty?` (devuelve cierto si el árbol no tiene elementos) y `each` (el iterador estándar que devuelve un elemento cada vez, en el orden que tu quieras).
 15. Extienda la clase de tu árbol binario ordenado para que ofrezca los siguientes métodos, cada uno de los cuales toma un bloque: `include?(elt)` (devuelve cierto si el árbol incluye a `elt`), `all?` (cierto si un bloque dado es cierto para todos los elementos), `any?` (cierto si un bloque dado es cierto para alguno de sus elementos), `sort` (ordena los elementos).
-#### Otros ejercicios
+
+## Respuestas
+
+## Otros ejercicios
 
 1. Escribe una función que acepte una cadena que contenga todas las letras del alfabeto excepto una y devuelva la letra que falta. Por ejemplo, la cadena `the quick brown box jumps over a lazy dog` contiene todas las letras del alfabeto excepto la letra `f`. La función debe tener una complejidad temporal de `O(n)`.
 2. Escribe un algoritmo que encuentre el mayor valor dentro de un árbol de búsqueda binario
@@ -40,3 +50,5 @@ sólo una forma simplificada de escribir `i=i+f.  Diseña y pon a prueba un expe
     Un ejemplo más: `[19, 13, 15, 12, 18, 14, 17, 11]`
 
     La secuencia más larga de est arreglo es `11-12-13-14-15`, por lo que la función devolvería `5`. Si ordenamos el arreglo, podemos recorrerla solo una vez para encontrar la secuencia consecutiva más      larga. Sin embargo, el ordenamiento en sí tomaría $O(n \log n)$. Tu trabajo es optimizar la función para que tome tiempo $O(n)$.
+
+## Respuestas
