@@ -185,7 +185,6 @@ Donde %40 representa @
   - PATCH: Para modificar parcialmente una entidad en el servidor.
   - DELETE: Para elminiar una entidad en el servidor.
 
-
 ## HTTP sin estados y cookies
 
 Usaremos la aplicación que se encuentra en http://esaas-cookie-demo.herokuapp.com
@@ -207,14 +206,21 @@ Este comportamiento se puede analizar desde el código de la propia aplicación:
 
 ![](sources/2023-09-25-16-37-56.png)
 
-**Pregunta:** Prueba las dos primeras operaciones `GET` anteriores. El cuerpo de la respuesta para la primera debe ser `"Logged in: false"` y para la segunda `"Login cookie set"`. 
-¿Cuáles son las diferencias en los encabezados de respuesta que indican que la segunda operación está configurando una cookie? (Sugerencia: usa `curl -v`, que mostrará tanto los encabezados de solicitud como los encabezados y el cuerpo de la respuesta, junto con otra información de depuración. `curl --help` imprimirá una ayuda voluminosa para usar `cURL` y `man curl` mostrará la página del manual de Unix  para cURL en la mayoría de los sistemas.) 
-
-
-
 **Pregunta:** Bien, ahora supuestamente `"logged in"` porque el servidor configuró una cookie que indica esto. Sin embargo, si intentaa `GET /` nuevamente, seguirá diciendo `"Logged: false"`. 
 ¿Qué está sucediendo? (Sugerencia: `usa curl -v` y observa los encabezados de solicitud del cliente). 
 
+La cookie no está siendo almacenada. Probamos el siguiente comando para arerglar el problema:
 
+```curl -i --cookie-jar cookies.txt 'http://esaas-cookie-demo.herokuapp.com/login'```
 
+![](sources/2023-09-26-11-59-05.png)
+
+El contenido del encabezado Set-Cookie coincide con el archivo cookies.txt que crea este comando. Tiene los cuatro elementos que están separados por punto y coma en la cabecera, pero figuran en el orden opuesto. Primero sale el HttpOnly, luego la ruta, luego el dominio y por último el logged_in=true.
+
+![](sources/2023-09-26-11-55-34.png)
+
+**Pregunta:** Al observar el encabezado `Set-Cookie` o el contenido del archivo `cookies.txt`, parece que podría haber creado fácilmente esta cookie y simplemente obligar al servidor a creer que ha iniciado sesión. En la práctica, ¿cómo evitan los servidores esta inseguridad? 
+
+- Las cookies pueden configurarse como seguras, lo que significa que solo se transmiten a través de conexiones HTTP seguras.
+- Las cookies suelen tener una fecha de vencimiento después de la cual ya no son válidas.
 
