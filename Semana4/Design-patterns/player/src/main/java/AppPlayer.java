@@ -1,4 +1,4 @@
-public class Main {
+public class AppPlayer {
     public static void main(String[] args) {
         // Crear una instancia de AudioPlayerAdapter
         SpanishMusicPlayerAdapter spanishMusicPlayerAdapter = new SpanishMusicPlayerAdapter();

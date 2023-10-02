@@ -1,7 +1,6 @@
 // Adaptador para reproducir archivos de audio utilizando el reproductor de música
 class SpanishMusicPlayerAdapter implements SpanishMediaPlayer {
     private MusicPlayer musicPlayer;
-    private State state;
 
     public SpanishMusicPlayerAdapter() {
         this.musicPlayer = new MusicPlayer();
