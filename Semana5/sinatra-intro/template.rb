@@ -69,7 +69,14 @@ end
 # 			otherwise render json with msg set to "error: description can't be blank"
 # hint: use method Todo's class method create
 post '/todos' do
-  ### TU CODIGO AQUI
+  ### TU CODIGO AQUI ###
+  content_type :json
+  todo = Todo.new(description: params[:description])
+  if todo.save
+    return {msg: "create success"}.to_json
+  else
+    return {msg: todo.errors}.to_json
+  end
 end
 
 # update a todo
