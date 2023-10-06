@@ -1,12 +1,16 @@
 class WordGuesserGame
-
   # add the necessary class methods, attributes, etc. here
   # to make the tests in spec/wordguesser_game_spec.rb pass.
+
+  attr_accessor :word, :guesses, :wrong_guesses
 
   # Get a word from remote "random word" service
 
   def initialize(word)
     @word = word
+    @guesses = ''
+    @wrong_guesses = ''
+    @current_status = :play
   end
 
   # You can test it by installing irb via $ gem install irb
@@ -20,6 +24,38 @@ class WordGuesserGame
     Net::HTTP.new('randomword.saasbook.info').start { |http|
       return http.post(uri, "").body
     }
+  end
+  def guess(new_guess)
+
+    raise ArgumentError if new_guess.nil?
+    raise ArgumentError if new_guess.empty?
+    raise ArgumentError if new_guess =~ /[^a-zA-Z]+/
+
+    new_guess.downcase!
+
+    if (!@guesses.include? new_guess) && (!@wrong_guesses.include? new_guess)
+      if @word.include? new_guess
+        @guesses << new_guess
+        @current_status = :win if !word_with_guesses.include?('-') && @current_status != :lose
+        return true
+      else
+        @wrong_guesses << new_guess
+        @current_status = :lose if @wrong_guesses.length >= 7
+        return true
+      end
+    end
+
+    false
+  end
+
+  def word_with_guesses
+    re = @guesses.empty? ? '.' : "[^#{@guesses}]"
+    regexp = Regexp.new(re, Regexp::IGNORECASE)
+    @word.gsub(regexp , '-')
+  end
+
+  def check_win_or_lose
+    @current_status
   end
 
 end
