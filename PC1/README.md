@@ -21,11 +21,15 @@
 
 ## Para revisión del profesor
 
-1. Todos los grupos deben presentar un video (no hay tiempo límite) donde expliquen claramente cada una de las secciones de la evaluación, además de un informe en pdf (no se admiten archivos de otros tipo) de sus respuestas:
+1. Integrantes del grupo:
+   > Miguel Vega y Aldo Luna
 
-    > [Videos explicativos](https://drive.google.com/drive/folders/1mgccdeEDmOI-qe5lK_isubp48rdxzV7o?usp=sharing) e [informe en PDF](./sources/PC1.pdf).
+2. Todos los grupos deben presentar un video (no hay tiempo límite) donde expliquen claramente cada una de las secciones de la evaluación, además de un informe en pdf (no se admiten archivos de otros tipo) de sus respuestas:
 
-2. Esta práctica es sobre 17 se va a tomar en cuenta las tareas Hola Ruby y JUnit 5 y Rspec:
+    > - [Videos explicativos en orden temático](https://drive.google.com/drive/folders/1mgccdeEDmOI-qe5lK_isubp48rdxzV7o?usp=sharing)
+    > - [informe en PDF](./sources/PC1.pdf).
+
+3. Esta práctica es sobre 17 se va a tomar en cuenta las tareas Hola Ruby y JUnit 5 y Rspec:
    
     > [JUnit 5 y RSpec](/JUnit%20and%20RSpec/)
 
