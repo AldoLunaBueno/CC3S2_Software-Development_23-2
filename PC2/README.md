@@ -32,7 +32,7 @@ El método tiene una complejidad de O(n), como se pidió, porque solo recorre un
 
 ### Ítem 2. BinaryTree
 
-Creamos la clase `BinaryTree` cuyos métodos son `initialize()`, `<<`, `empty?`, `each()`. El constructor puede o no tomar un valor para el nodo raíz. Insertamos valores en nuevos nodos del árbol usando el método `<<`.
+Creamos la clase `BinaryTree` cuyos métodos son `initialize()`, `<<`, `empty?`, `each()`. El constructor puede o no tomar un valor para el nodo raíz. Insertamos valores en nuevos nodos del árbol usando el método `<<`. El método `each()` recorre el árbol en orden (in-order traversal), por lo que en el siguiente ítem se usará para definir el método `sort()`.
 
 ```ruby
 class BinaryTree
@@ -153,7 +153,9 @@ class BinaryTreeExtended < BinaryTree
 end
 ```
 
-Para usar la herencia en una clase que usa métodos de forma recursiva sobre instancias de la misma clase aprendimos que debemos sobreescribir esos métodos. Concretamente, tuvimos que sobreescribir el método `<<` de inserción de elementos. ¿Por qué? Por que si no todos los nodos (excepto el nodo raíz) serían instancias de la clase padre `BinaryTree`, y no se podría usar el método recursivo como `include?` de la clase hija sobre dichos nodos. De esta forma, todos los elementos insertados en el árbol ahora son instancias de la clase correcta: `BinaryTreeExtended`.
+Para usar la herencia en una clase que usa métodos de forma recursiva sobre instancias de la misma clase aprendimos que debemos sobreescribir el método que crea las instancias. 
+
+Concretamente, tuvimos que sobreescribir el método `<<` de inserción de elementos. ¿Por qué? Por que si no todos los nodos (excepto el nodo raíz) serían instancias de la clase padre `BinaryTree` en vez de que sean de la clase hija `BinaryTreeExtended`, y no se podría usar el método recursivo como `include?` de la clase hija sobre dichos nodos. Con este método sobreescrito, todos los elementos insertados en el árbol ahora son instancias de la clase correcta: `BinaryTreeExtended`.
 
 ## Parte 3. Rails
 ![](sources/2023-10-11-09-47-47.png)
