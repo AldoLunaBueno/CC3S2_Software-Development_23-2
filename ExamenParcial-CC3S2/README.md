@@ -11,7 +11,7 @@ Creamos una nueva aplicación Rails:
 Tenemos problemas para correr la versión de bundler que necesitamos:
 
 ![](sources/2023-10-18-08-11-09.png)
-
+ 
 
 
 ## Parte 3. Ruby on Rails
