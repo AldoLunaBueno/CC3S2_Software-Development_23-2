@@ -1,8 +1,18 @@
 ## Parte 2. Rails
 
+Instalamos la versión de bundler que necesitamos:
+
 ![](sources/2023-10-18-08-08-59.png)
+
+Creamos una nueva aplicación Rails:
+
 ![](sources/2023-10-18-08-10-03.png)
+
+Tenemos problemas para correr la versión de bundler que necesitamos:
+
 ![](sources/2023-10-18-08-11-09.png)
+
+
 
 ## Parte 3. Ruby on Rails
 
