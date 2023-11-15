@@ -2,7 +2,7 @@
 
 Instalamos la versión de bundler que necesitamos:
 
-![](sources/2023-10-18-08-08-59.png)
+![](sources/2023-10-18-08-08-59.png) 
 
 Creamos una nueva aplicación Rails:
 
