@@ -4,6 +4,7 @@
 - [SSO y autenticación a través de terceros](#sso-y-autenticación-a-través-de-terceros)
   - [Modelo y migración para representar usuarios](#modelo-y-migración-para-representar-usuarios)
   - [Creación de una cuenta de desarrollador de Twitter](#creación-de-una-cuenta-de-desarrollador-de-twitter)
+  - [Claves foráneas](#claves-foráneas)
 
 ## Vistas parciales, validaciones y filtros
 
@@ -306,7 +307,36 @@ end
 
 **Pregunta**
 
-Pregunta: Debes tener cuidado para evitar crear una vulnerabilidad de seguridad. ¿Qué sucede si un atacante malintencionado crea un envío de formulario que intenta modificar params[:moviegoer][:uid] o params[:moviegoer][:provider] (campos que solo deben modificarse mediante la lógica de autenticación) publicando campos de formulario ocultos denominados params[moviegoer][uid] y así sucesivamente?.
+Debes tener cuidado para evitar crear una vulnerabilidad de seguridad. ¿Qué sucede si un atacante malintencionado crea un envío de formulario que intenta modificar params[:moviegoer][:uid] o params[:moviegoer][:provider] (campos que solo deben modificarse mediante la lógica de autenticación) publicando campos de formulario ocultos denominados params[moviegoer][uid] y así sucesivamente?.
 
 **Respuesta**
+
+Si un atacante malintencionado logra enviar un formulario manipulado para cambiar estos parámetros importantes de autenticación, podría introducir datos peligrosos en el sistema, comprometiendo la seguridad y permitiendo cambios indebidos en la aplicación. Para prevenir esto, es esencial utilizar Strong Parameters para controlar qué datos se aceptan en los formularios y agregar validaciones, como tokens CSRF, para garantizar la autenticidad de las solicitudes y evitar ataques maliciosos. Estas medidas ayudarán a proteger eficazmente contra posibles amenazas.
+
+### Claves foráneas
+
+**Pregunta**
+
+Explica la siguientes líneas de SQL:
+```sql
+SELECT reviews.*
+    FROM movies JOIN reviews ON movies.id=reviews.movie_id
+    WHERE movies.id = 41;
+```
+
+**Respuesta**
+
+Selecciona todos los campos (*) de la tabla "reviews" donde la condición es que el ID de la película en la tabla "movies" sea igual a 41. La relación entre las dos tablas se establece mediante la cláusula JOIN, donde la columna "id" en la tabla "movies" debe coincidir con la columna "movie_id" en la tabla "reviews".
+
+**Pregunta**
+
+¿Por que se puede hacer esto?
+
+**Respuesta**
+
+Porque en las lógica relacional del lenguaje SQL se puede usar la cláusula JOIN para combinar tablas basandose en campos comunes entre estas tablas.
+
+![](sources/2023-11-19-00-05-40.png)
+
+
 
