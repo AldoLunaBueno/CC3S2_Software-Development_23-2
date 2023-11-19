@@ -1,4 +1,11 @@
-# Rails avanzado
+# Rails avanzado <!-- omit in toc -->
+
+- [Vistas parciales, validaciones y filtros](#vistas-parciales-validaciones-y-filtros)
+- [SSO y autenticación a través de terceros](#sso-y-autenticación-a-través-de-terceros)
+  - [Modelo y migración para representar usuarios](#modelo-y-migración-para-representar-usuarios)
+  - [Creación de una cuenta de desarrollador de Twitter](#creación-de-una-cuenta-de-desarrollador-de-twitter)
+
+## Vistas parciales, validaciones y filtros
 
 Siguiendo [la actividad](https://github.com/kapumota/Desarrollo-software-2023/blob/main/Semana7/Actividad1.md), copiamos la base de código del proyecto myrottenpotatoes y lo abrimos en RubyMine. Aquí el programa nos pide configurar e instalar drivers para conectarnos a la base de datos (SQLite).
 
@@ -162,7 +169,7 @@ end
 ```
 
 
-Tiramos las siguientes instrucciones en la consola de Rails para comprobar que el dato del título se ha normalizado:
+Ejecutamos los siguientes comandos en la consola de Rails para comprobar que el dato del título se ha normalizado:
 
 ```ruby
 m = Movie.create!(:title => 'STAR  wars', :release_date => '27-5-1977', :rating => 'PG')
@@ -173,3 +180,133 @@ m.title
 ![](sources/2023-11-15-07-48-30.png)
 
 Como vemos, el título que introducimos con la primera palabra toda en mayúsculas no es el mismo que el que se guardó: solo las primeras letras de cada palabra están en mayúscula.
+
+## SSO y autenticación a través de terceros
+
+### Modelo y migración para representar usuarios
+
+Aquí la actividad nos pide ejecutar el siguiente comando:
+
+```bash
+rails generate model Moviegoer name:string provider:string uid:string
+```
+
+Sin embargo, este comando usa el nombre _Moviegoer_, el cual ya usamos en la aplicación. Pero Rails nos ofrece la opción de saltarnos la colisión y forzar la generación del modelo y la migración que queremos. Solo tenemos que agregar lo siguiente:
+
+```bash
+rails generate model Moviegoer name:string provider:string uid:string --skip-collision-check --force
+```
+
+Este comando elimina el archivo de migración anterior, es decir _20231115113331_create_moviegoers.rb_, crea un nuevo archivo de migración _20231116125226_create_moviegoers.rb_ y sobrescribe el archivo _moviegoer.rb_
+ del modelo Moviegoer. Procedí así:
+
+![](sources/2023-11-16-07-56-17.png)
+
+El archivo moviegoer.rb quedó prácticamente vacío. Lo llenamos con el código proporcionado en la actividad:
+
+
+```ruby
+# Edit app/models/moviegoer.rb to look like this:
+class Moviegoer < ActiveRecord::Base
+  def self.create_with_omniauth(auth)
+    Moviegoer.create!(
+      :provider => auth["provider"],
+      :uid => auth["uid"],
+      :name => auth["info"]["name"])
+  end
+end
+```
+
+Ahora toca aplicar la migración con el comando `rake db:migrate`, pero ocurre un error:
+
+![](sources/2023-11-16-08-11-33.png)
+
+Dice que la tabla _moviegoers_ ya existe.
+
+
+Lo que hacemos para evitar este conflicto es eliminar y volver a crear la base de datos con los siguientes comandos:
+
+```bash
+rails db:drop
+rails db:create
+```
+
+![](sources/2023-11-16-08-21-11.png)
+
+Cuando intentamos otra vez aplicar la migración con el comando `rake db:migrate`, ocurre un nuevo error:
+
+![](sources/2023-11-16-08-23-42.png)
+
+Al parecer, la versión de la migración del archivo _20231003234846_create_movies.rb_ se borró al eliminar y volver a crear la base de datos. Agregamos entre corchetes la versión 7.0:
+
+```ruby
+class CreateMovies < ActiveRecord::Migration[7.0]
+```
+
+Y ahora sí podemos ejectuar satisfactoriamente el comando para aplciar la migración:
+
+```bash
+rake db:migrate
+```
+
+![](sources/2023-11-16-08-28-46.png)
+
+Arrancamos el servidor para ver en el navegador que ya no hay ningún título:
+
+![](sources/2023-11-16-08-20-24.png)
+
+Esto se resuelve usando el siguiente comando:
+
+```bash
+rails db:seed
+```
+
+![](sources/2023-11-16-08-41-33.png)
+
+### Creación de una cuenta de desarrollador de Twitter
+
+Vamos a crear una cuenta de desarrollador de Twitter porque es un proveedor de autenticación de usuarios mediante OAuth.
+
+Para crear esta cuenta, nos piden describir todos los casos de uso de la API. Esto es lo que declaramos:
+
+> Use Case: User Authentication with Twitter via OAuth
+
+> Our application facilitates user authentication through Twitter using OAuth. We aim to enhance user experience by allowing individuals to log in to our platform seamlessly using their Twitter credentials. This authentication process grants us limited access to the user's Twitter account, allowing us to retrieve basic profile information and establish a secure connection between our application and Twitter.
+
+> Key Points:
+>  - User Login via Twitter
+> - OAuth Authentication Flow
+> - Access to Basic Profile Information
+> - Security Measures
+> - Logout and Session Management
+
+![](sources/2023-11-16-10-23-10.png)
+
+Entramos al portal del desarrollador y vemos que se ha creado un proyecto por defecto y una applicación en este proyecto. Esta app de Twitter tiene asociados las llaves y tokens que necesitamos para la aplicación que estamos desarrollando, así que le damos clic al símbolo de la llave azul.
+
+![](sources/2023-11-16-10-25-38.png)
+
+Aquí regeneramos la llave y el secreto API:
+
+![](sources/2023-11-16-10-36-47.png)
+
+Y las copiamos:
+
+![](sources/2023-11-16-10-27-52.png)
+
+Estas irán en el archivo _omniauth.rb_ de nuestra aplicación:
+
+```ruby
+# Replace API_KEY and API_SECRET with the values you got from Twitter
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :twitter, "API_KEY", "API_SECRET"
+end
+```
+
+
+**Pregunta**
+
+Pregunta: Debes tener cuidado para evitar crear una vulnerabilidad de seguridad. ¿Qué sucede si un atacante malintencionado crea un envío de formulario que intenta modificar params[:moviegoer][:uid] o params[:moviegoer][:provider] (campos que solo deben modificarse mediante la lógica de autenticación) publicando campos de formulario ocultos denominados params[moviegoer][uid] y así sucesivamente?.
+
+**Respuesta**
+
