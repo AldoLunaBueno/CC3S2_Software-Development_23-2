@@ -200,10 +200,10 @@ Charizard.prototype.fight = function () {
 }
 
 // Ejemplo de uso:
-const charizardInstance = new Charizard(80, 100, 70, "Lanzallamas");
-charizardInstance.flight(); // Lanza un error ya que el movimiento no está especificado para Pokemon
-charizardInstance.canFly(); // Devuelve true, ya que el tipo incluye "volar"
-charizardInstance.fight(); // Imprime "Utilizando el movimiento Lanzallamas." y devuelve el campo de ataque.
+const charizardInstance1 = new Charizard(80, 100, 70, "Lanzallamas");
+charizardInstance1.flight(); // Lanza un error ya que el movimiento no está especificado para Pokemon
+charizardInstance1.canFly(); // Devuelve true, ya que el tipo incluye "volar"
+charizardInstance1.fight(); // Imprime "Utilizando el movimiento Lanzallamas." y devuelve el campo de ataque.
 
 // Con azúcar /////////////////////////
 
