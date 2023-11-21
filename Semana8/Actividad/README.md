@@ -7,8 +7,10 @@
 - [Algoritmos](#algoritmos)
   - [Método `greatestNumber()`](#método-greatestnumber)
   - [Método `containsX()`](#método-containsx)
-  - [Método `firstNotDuplicated()`](#método-firstnotduplicated)
+  - [Método `firstNonRepeatedCharacter()`](#método-firstnonrepeatedcharacter)
 - [Clases](#clases)
+  - [Sin azúcar sintáctica](#sin-azúcar-sintáctica)
+  - [Con azúcar 🍭🍬🍯](#con-azúcar-)
 
 > Para responder a la mayoría de las preguntas, probamos todo el código aquí en _scripts_ usando la extensión de VS Code llamada **Code Runner**. Lo hacemos como mostramos al principio de [esta parte](#método-containsx).
 
@@ -175,8 +177,6 @@ function greatestNumber(array) {
 }
 ```
 
-Mientras el anterior método ser podía hacer 
-
 ### Método `containsX()`
 
 La siguiente función devuelve true o false si hay o no una "X" mayúscula dentro de una cadena.
@@ -240,7 +240,7 @@ function containsX(string) {
 
 De hecho, parece que es la opción menos eficiente. En cada iteración hay dos instrucciones elementales que hacer, mientras que en las anteriores opciones solo era una operación elemental.
 
-### Método `firstNotDuplicated()`
+### Método `firstNonRepeatedCharacter()`
 
 ```javascript
 function firstNonRepeatedCharacter(string) {
@@ -284,10 +284,24 @@ function firstNonRepeatedCharacter(string) {
 
 ## Clases
 
+Practiquemos la herencia y la programación orientada a objetos en Javascript. Diseñe 2 clases, una llamada "Pokemon" y otra llamada "Charizard". Las clases deben hacer lo siguiente:
+
+Clase Pokémon:
+
+El constructor toma 3 parámetros (HP, ataque, defensa)
+El constructor debe crear 6 campos (HP, ataque, defensa, movimiento, nivel, tipo). Los valores de (mover, nivelar, tipo) debe inicializarse en ("", 1, "").
+Implementa un método flight que arroje un error que indique que no se especifica ningún movimiento.
+Implementa un método canFly que verifica si se especifica un tipo. Si no, arroja un error. Si es así, verifica si el tipo incluye "volar". En caso afirmativo, devuelve verdadero; si no, devuelve falso.
+
+Clase Charizard:
+
+El constructor toma 4 parámetros (HP, ataque, defensa, movimiento)
+El constructor configura el movimiento y el tipo (para "disparar/volar") además de establecer HP, ataque y defensa como el constructor de superclase.
+Sobreescribe el método fight. Si se especifica un movimiento, imprime una declaración que indique que se está utilizando el movimiento y devuelve el campo de ataque. Si no, arroja un error.
 
 Crearemos dos versiones: una sin la azúcar sintáctica de `class` y la otro con ella:
 
-**Sin azúcar sintáctica**
+### Sin azúcar sintáctica
 
 ```javascript
 // Función constructora para Pokemon
@@ -338,7 +352,7 @@ Charizard.prototype.fight = function () {
 }
 ```
 
-**Con azúcar** 🍭🍬🍯
+### Con azúcar 🍭🍬🍯
 
 ```javascript
 class Pokemon {
