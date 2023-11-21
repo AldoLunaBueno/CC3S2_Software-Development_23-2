@@ -116,3 +116,141 @@ function containsX(string) {
   return charMap['X'] === true;
 }
 console.log(containsX("aXe"))
+
+
+// Último método
+
+function firstNonRepeatedCharacter(string) {
+  const frequency = {}
+  const nonRepeatedCharacters = []
+
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i];
+    frequency[char] = (frequency[char] || 0) + 1
+    if (frequency[char] === 1) {
+      nonRepeatedCharacters.push(char)
+    } else {
+      const index = nonRepeatedCharacters.indexOf(char)
+      if (index !== -1) {
+        nonRepeatedCharacters.splice(index, 1)
+      }
+    }
+  }
+  for (let i = 0; i < nonRepeatedCharacters.length; i++) {
+    const char = nonRepeatedCharacters[i];
+    if (string.indexOf(char) !== -1) {
+      return char;
+    }
+  }
+  return null;
+}
+
+const result = firstNonRepeatedCharacter("minimum");
+console.log(result); // Salida: "n"
+
+// Clases
+
+// Sin azúcar ////////////////////////
+
+// Función constructora para Pokemon
+function Pokemon(HP, ataque, defensa) {
+  this.HP = HP
+  this.ataque = ataque
+  this.defensa = defensa
+  this.movimiento = ""
+  this.nivel = 1
+  this.tipo = ""
+}
+
+// Método flight para Pokemon
+Pokemon.prototype.flight = function () {
+  if (!this.movimiento) {
+    throw new Error("No se especificó ningún movimiento.")
+  }
+  console.log(`${this.movimiento} utilizado.`)
+};
+
+// Método canFly para Pokemon
+Pokemon.prototype.canFly = function () {
+  if (!this.tipo) {
+    throw new Error("No se especificó ningún tipo.")
+  }
+  return this.tipo.includes("volar")
+};
+
+// Función constructora para Charizard que hereda de Pokemon
+function Charizard(HP, ataque, defensa, movimiento) {
+  Pokemon.call(this, HP, ataque, defensa)
+  this.movimiento = movimiento
+  this.tipo = "disparar/volar"
+}
+
+// Establecer la herencia de Charizard desde Pokemon
+Charizard.prototype = Object.create(Pokemon.prototype)
+Charizard.prototype.constructor = Charizard
+
+// Sobrescribir el método fight para Charizard
+Charizard.prototype.fight = function () {
+  if (this.movimiento) {
+    console.log(`Utilizando el movimiento ${this.movimiento}.`)
+    return this.ataque
+  } else {
+    throw new Error("No se especificó ningún movimiento.")
+  }
+}
+
+// Ejemplo de uso:
+const charizardInstance = new Charizard(80, 100, 70, "Lanzallamas");
+charizardInstance.flight(); // Lanza un error ya que el movimiento no está especificado para Pokemon
+charizardInstance.canFly(); // Devuelve true, ya que el tipo incluye "volar"
+charizardInstance.fight(); // Imprime "Utilizando el movimiento Lanzallamas." y devuelve el campo de ataque.
+
+// Con azúcar /////////////////////////
+
+class Pokemon {
+  constructor(HP, ataque, defensa) {
+    this.HP = HP;
+    this.ataque = ataque;
+    this.defensa = defensa;
+    this.movimiento = "";
+    this.nivel = 1;
+    this.tipo = "";
+  }
+
+  flight() {
+    if (!this.movimiento) {
+      throw new Error("No se especificó ningún movimiento.");
+    }
+    console.log(`${this.movimiento} utilizado.`);
+  }
+
+  canFly() {
+    if (!this.tipo) {
+      throw new Error("No se especificó ningún tipo.");
+    }
+    return this.tipo.includes("volar");
+  }
+}
+
+class Charizard extends Pokemon {
+  constructor(HP, ataque, defensa, movimiento) {
+    super(HP, ataque, defensa);
+    this.movimiento = movimiento;
+    this.tipo = "disparar/volar";
+  }
+
+  fight() {
+    if (this.movimiento) {
+      console.log(`Utilizando el movimiento ${this.movimiento}.`);
+      return this.ataque;
+    } else {
+      throw new Error("No se especificó ningún movimiento.");
+    }
+  }
+}
+
+ // Ejemplo de uso:
+const charizardInstance = new Charizard(80, 100, 70, "Lanzallamas");
+charizardInstance.flight(); // Lanza un error ya que el movimiento no está especificado para Pokemon
+charizardInstance.canFly(); // Devuelve true, ya que el tipo incluye "volar"
+charizardInstance.fight(); // Imprime "Utilizando el movimiento Lanzallamas." y devuelve el campo de ataque.

@@ -1,4 +1,16 @@
-# Actividad de introducción a JavaScript
+# Actividad de introducción a JavaScript <!-- omit in toc -->
+
+- [Preguntas conceptuales](#preguntas-conceptuales)
+- [Booleano](#booleano)
+- [Arrays](#arrays)
+- [Clausuras](#clausuras)
+- [Algoritmos](#algoritmos)
+  - [Método `greatestNumber()`](#método-greatestnumber)
+  - [Método `containsX()`](#método-containsx)
+  - [Método `firstNotDuplicated()`](#método-firstnotduplicated)
+- [Clases](#clases)
+
+> Para responder a la mayoría de las preguntas, probamos todo el código aquí en _scripts_ usando la extensión de VS Code llamada **Code Runner**. Lo hacemos como mostramos al principio de [esta parte](#método-containsx).
 
 ## Preguntas conceptuales
 
@@ -228,3 +240,146 @@ function containsX(string) {
 
 De hecho, parece que es la opción menos eficiente. En cada iteración hay dos instrucciones elementales que hacer, mientras que en las anteriores opciones solo era una operación elemental.
 
+### Método `firstNotDuplicated()`
+
+```javascript
+function firstNonRepeatedCharacter(string) {
+  // Objeto para almacenar la frecuencia de cada caracter
+  const frequency = {}
+
+  // Array para mantener el orden de aparición de los caracteres no duplicados
+  const nonRepeatedCharacters = []
+
+  // Iterar sobre la cadena para contar la frecuencia de cada caracter y almacenar el orden
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i]
+
+    // Incrementar la frecuencia del caracter
+    frequency[char] = (frequency[char] || 0) + 1
+
+    // Si es la primera vez que aparece, agregar al array de caracteres no duplicados
+    if (frequency[char] === 1) {
+      nonRepeatedCharacters.push(char)
+    } else {
+      // Si ya es duplicado, eliminar del array de caracteres no duplicados
+      const index = nonRepeatedCharacters.indexOf(char)
+      if (index !== -1) {
+        nonRepeatedCharacters.splice(index, 1)
+      }
+    }
+  }
+
+  // Iterar sobre los caracteres no duplicados y devolver el primero que aparezca en la cadena original
+  for (let i = 0; i < nonRepeatedCharacters.length i++) {
+    const char = nonRepeatedCharacters[i];
+    if (string.indexOf(char) !== -1) {
+      return char
+    }
+  }
+
+  // Si no se encuentra ningún caracter no duplicado, devolver null
+  return null
+}
+```
+
+## Clases
+
+
+Crearemos dos versiones: una sin la azúcar sintáctica de `class` y la otro con ella:
+
+**Sin azúcar sintáctica**
+
+```javascript
+// Función constructora para Pokemon
+function Pokemon(HP, ataque, defensa) {
+  this.HP = HP
+  this.ataque = ataque
+  this.defensa = defensa
+  this.movimiento = ""
+  this.nivel = 1
+  this.tipo = ""
+}
+
+// Método flight para Pokemon
+Pokemon.prototype.flight = function () {
+  if (!this.movimiento) {
+    throw new Error("No se especificó ningún movimiento.")
+  }
+  console.log(`${this.movimiento} utilizado.`)
+};
+
+// Método canFly para Pokemon
+Pokemon.prototype.canFly = function () {
+  if (!this.tipo) {
+    throw new Error("No se especificó ningún tipo.")
+  }
+  return this.tipo.includes("volar")
+};
+
+// Función constructora para Charizard que hereda de Pokemon
+function Charizard(HP, ataque, defensa, movimiento) {
+  Pokemon.call(this, HP, ataque, defensa)
+  this.movimiento = movimiento
+  this.tipo = "disparar/volar"
+}
+
+// Establecer la herencia de Charizard desde Pokemon
+Charizard.prototype = Object.create(Pokemon.prototype)
+Charizard.prototype.constructor = Charizard
+
+// Sobrescribir el método fight para Charizard
+Charizard.prototype.fight = function () {
+  if (this.movimiento) {
+    console.log(`Utilizando el movimiento ${this.movimiento}.`)
+    return this.ataque
+  } else {
+    throw new Error("No se especificó ningún movimiento.")
+  }
+}
+```
+
+**Con azúcar** 🍭🍬🍯
+
+```javascript
+class Pokemon {
+  constructor(HP, ataque, defensa) {
+    this.HP = HP;
+    this.ataque = ataque;
+    this.defensa = defensa;
+    this.movimiento = "";
+    this.nivel = 1;
+    this.tipo = "";
+  }
+
+  flight() {
+    if (!this.movimiento) {
+      throw new Error("No se especificó ningún movimiento.");
+    }
+    console.log(`${this.movimiento} utilizado.`);
+  }
+
+  canFly() {
+    if (!this.tipo) {
+      throw new Error("No se especificó ningún tipo.");
+    }
+    return this.tipo.includes("volar");
+  }
+}
+
+class Charizard extends Pokemon {
+  constructor(HP, ataque, defensa, movimiento) {
+    super(HP, ataque, defensa);
+    this.movimiento = movimiento;
+    this.tipo = "disparar/volar";
+  }
+
+  fight() {
+    if (this.movimiento) {
+      console.log(`Utilizando el movimiento ${this.movimiento}.`);
+      return this.ataque;
+    } else {
+      throw new Error("No se especificó ningún movimiento.");
+    }
+  }
+}
+```
