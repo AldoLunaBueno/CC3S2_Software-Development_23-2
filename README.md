@@ -2,6 +2,10 @@
 
 Lenguajes de programación: Java, JavaScript, Python y Ruby,
 
+Repo con las actividades: https://github.com/AldoLunaBueno/Desarrollo-software-2023_Profesor
+
+Libro base: https://e.saasbook.info/
+
 ### Temario
 
 - Introducción al software como servicio, desarrollo ágil y computación en la nube
