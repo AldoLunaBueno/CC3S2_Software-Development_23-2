@@ -12,7 +12,7 @@
   - [Sin azúcar sintáctica](#sin-azúcar-sintáctica)
   - [Con azúcar 🍭🍬🍯](#con-azúcar-)
 
-> Para responder a la mayoría de las preguntas, probamos todo el código que está aquí en [_scripts.js_](.\scripts.js) usando la extensión de VS Code llamada **Code Runner**. Lo hacemos como mostramos al principio de [esta parte](#método-containsx).
+> Para responder a la mayoría de las preguntas, probamos todo el código que está aquí en [_scripts.js_](./scripts.js) usando la extensión de VS Code llamada **Code Runner**. Lo hacemos como mostramos al principio de [esta parte](#método-containsx).
 
 ## Preguntas conceptuales
 
