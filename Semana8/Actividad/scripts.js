@@ -1,3 +1,14 @@
+// Clausuras
+
+function f1(x) {
+  var baz = 3;
+  return function (y) {
+    console.log(x + y + (baz++));
+    }
+}
+var bar = f1(5);
+bar(11);
+
 // La siguiente función devuelve si hay o no una “X” mayúscula dentro de una cadena.
 
 function containsX(string) {

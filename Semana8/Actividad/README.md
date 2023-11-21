@@ -1,8 +1,41 @@
 # Actividad de introducción a JavaScript
 
+## Clausuras
+
+**Pregunta**
+
+Determina la salida del siguiente código.
+
+```javascript
+function f1(x) {
+  var baz = 3;
+  return function (y) {
+    console.log(x + y + (baz++));
+    }
+}
+var bar = f1(5);
+bar(11);
+```
+
+**Respuesta**
+
+El resultado es 19. Veamos lo que sucede paso a paso:
+
+1. f1(5) se llama, por lo que x toma el valor de 5 y baz se inicializa en 3.
+   
+2. La función anidada se devuelve, y ahora bar es igual a esta función anidada, la cual trae consigo todo el contexto de la función que la contiene (los valores de x y de baz).
+   
+3. bar(11) se llama, y dentro de la función anidada, se imprime la suma de x (que es 5), y (que es 11), y el resultado de (baz++).
+   
+4. La expresión (baz++) primero usa el valor actual de baz (que es 3) en la suma y luego incrementa baz en 1.
+
+La suma al final 5 + 11 + 3 = 19.
+
 ## Algoritmos
 
+### Método `()`
 
+### Método `containsX()`
 
 La siguiente función devuelve true o false si hay o no una “X” mayúscula dentro de una cadena.
 
