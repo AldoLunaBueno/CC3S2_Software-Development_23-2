@@ -1,10 +1,21 @@
+// Booleano
+results = []
+results[0] = undefined == null
+results[1] = NaN == NaN
+results[2] = null == false
+results[3] = 0 == false
+results[4] = "" == false
+
+for (let result of results) {
+  console.log(result)
+}
+
 // Arrays
 
 results = []
 results[0] = [1, 2, 3] + [4, 5, 6]
 results[1] = !![]
 results[2] = [] == true
-
 results[3] = [10, 1, 3].sort()
 results[4] = [] == 0
 
