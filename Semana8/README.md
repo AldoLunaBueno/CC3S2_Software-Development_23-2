@@ -24,4 +24,4 @@ Cara objeto de JS hereda exactamente de un objeto de prototipo.
 > El mercado peruano funciona por contactos, no por plataformas como upwork, toptal... 
 
 
-
+javascript the good parts
