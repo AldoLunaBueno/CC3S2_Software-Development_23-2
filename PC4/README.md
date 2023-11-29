@@ -1,18 +1,18 @@
 # Práctica Calificada 4 <!-- omit in toc -->
 
-- [Pregunta 2](#pregunta-2)
-  - [Apartado](#apartado)
+- [Pregunta 1](#pregunta-1)
+  - [Apartado 2: clases Pokemon y Charizard](#apartado-2-clases-pokemon-y-charizard)
 - [Pregunta: introducción a Rails](#pregunta-introducción-a-rails)
-  - [Apartado A: index](#apartado-a-index)
+  - [Apartado A: agregar columna id](#apartado-a-agregar-columna-id)
   - [Apartado B](#apartado-b)
   - [Apartado C](#apartado-c)
   - [Apartado D](#apartado-d)
 
 
 
-## Pregunta 2
+## Pregunta 1
 
-### Apartado
+### Apartado 2: clases Pokemon y Charizard
 
 Diseñamos e implementamos [estas dos clases](/Semana8/Actividad/README.md#clases) en la actividad de introducción a JavaScript.
 
@@ -20,14 +20,21 @@ Diseñamos e implementamos [estas dos clases](/Semana8/Actividad/README.md#clase
 
 Para responder esta pregunta utiliza el repositorio y las actividades que has desarrollado de Introducción a Rails.
 
-### Apartado A: index
+### Apartado A: agregar columna id
 
 Modifica la vista Index para incluir el número de fila de cada fila en la tabla de películas.
 
+**Solución:**
+
+Editamos el código del archivo _index.html.erb_ agregando a las filas de datos el identificador `movie.id` mediante una expresión erb:
+
 ![](sources/2023-11-29-09-47-34.png)
+
+Y no podemos olvidar cambiar la cabecera de la tabla agregando el campo correspondiente:
 
 ![](sources/2023-11-29-09-52-22.png)
 
+El resultado se aprecia así al correr el servidor con `bin/rails server`:
 
 ![](sources/2023-11-29-09-54-33.png)
 
