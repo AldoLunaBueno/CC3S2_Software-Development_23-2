@@ -1,8 +1,3 @@
-=begin
-class ApplicationController < ActionController::Base
-end
-=end
-
 class ApplicationController < ActionController::Base
     before_action :set_current_user  # change before_filter
     protected # prevents method from being invoked by a route

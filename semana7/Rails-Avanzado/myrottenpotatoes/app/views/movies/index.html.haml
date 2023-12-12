@@ -1,6 +1,6 @@
 -# add to end of index.html.haml
  
-= link_to 'Add new movie', new_movie_path
+= link_to 'Log in with Twitter', login_path
 
 %h1 All Movies
 
@@ -18,3 +18,5 @@
         %td= movie.rating
         %td= movie.release_date
         %td= link_to "More about #{movie.title}", movie_path(movie)
+
+= link_to 'Add new movie', new_movie_path
