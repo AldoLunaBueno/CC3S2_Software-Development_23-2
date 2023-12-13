@@ -95,3 +95,26 @@ Para el modelo de User, digamos que queremos verificar si @user era administrado
 
 ## Parte 2
 
+Instalamos las gemas, excepto las del entorno de producción:
+
+![](sources/2023-12-13-09-35-24.png)
+
+Volvemos a hacer lo mismo luego de incluir las gemas de Faraday.
+
+Ahora nos aseguramos de que todos los rsepc estén en su lugar:
+
+![](sources/2023-12-13-09-39-29.png)
+
+Agregamos byebug:
+
+![](sources/2023-12-13-09-41-13.png)
+
+Ejecutamos Guard:
+
+![](sources/2023-12-13-09-47-03.png)
+
+Ejecutamos el servidor para verificar que todo está bien:
+
+![](sources/2023-12-13-09-53-40.png)
+
+### Paso 1
