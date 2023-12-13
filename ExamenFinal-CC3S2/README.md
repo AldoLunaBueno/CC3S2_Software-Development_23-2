@@ -93,6 +93,33 @@ Para el modelo de User, digamos que queremos verificar si @user era administrado
 ```
 ```
 
+### Apartado 4.
+
+Primero, implementaremos una solicitud AJAX POST utilizando jQuery para enviar los datos del formulario de inicio de sesión. Aquí está el código con los comentarios necesarios:
+
+```javascript
+$("#onSubmit").click(function() {
+    var username = $('.user').val();
+    var password = $('.pass').val();
+
+    $.ajax({
+        type: "POST",
+        url: "/login",
+        data: {
+            user: username,
+            pass: password
+        },
+        success: function(response) {
+            console.log("Login exitoso:", response);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error en el login:", xhr, status, error);
+        }
+    });
+});
+```
+
+
 ## Parte 2
 
 Instalamos las gemas, excepto las del entorno de producción:
