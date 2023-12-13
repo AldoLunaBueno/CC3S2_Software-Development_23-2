@@ -22,7 +22,7 @@ end
 
 **Respuesta**
 
-Si al crear nuestra instancia de User dejamos el campo :username como nil, lo que pasa es que la instancia no será almacenada en la base de datos del modelo debido al primer validador, que se interpone entre la instrucción del controlador @user.save y el modelo User. La instrucción @user.save guarda el objeto @user.
+Si al crear nuestra instancia de User dejamos el campo :username como nil, lo que pasa es que la instancia no será almacenada en la base de datos del modelo debido al primer validador, que se interpone entre la instrucción del controlador @user.save y el modelo User para que el objeto no sea persistido si es inválido. La instrucción @user.save guarda el objeto @user.
 
 
 ![](sources/2023-12-13-08-07-55.png)
@@ -47,7 +47,7 @@ def username_format
 end
 private
 def is_letter(string)
-    !string.match(/\A[a-zA-Z]*\z/).nil?          
+    string.match(/[[:alpha:]]/).nil?          
 end
 ```
 
@@ -71,14 +71,23 @@ class User < ApplicationRecord
     end
     private
     def is_letter(string)
-        !string.match(/[a-zA-Z]/).nil?          
+        string.match(/[[:alpha:]]/).nil?          
     end
 end
 ```
 
+Aquí podemos ver en consola que este validador username_format funciona como se espera:
+
+![](sources/2023-12-13-09-12-24.png)
+
+Y también podemos ver cómo funciona en el navegador:
+
+![](sources/2023-12-13-09-09-10.png)
+
 ### Apartado 3. Filtros del controlador
 
-
+```
+```
 
 ## Parte 2
 

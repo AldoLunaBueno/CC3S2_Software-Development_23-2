@@ -33,3 +33,190 @@ Completed 200 OK in 128ms (Views: 126.2ms | ActiveRecord: 0.2ms | Allocations: 9
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["username", "Aldo"], ["created_at", "2023-12-13 13:03:53.560101"], ["updated_at", "2023-12-13 13:03:53.560101"]]
   [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/new" for 127.0.0.1 at 2023-12-13 09:01:52 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 3.4ms | Allocations: 2728)
+  Rendered users/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 3352)
+  Rendered layout layouts/application.html.erb (Duration: 59.7ms | Allocations: 38836)
+Completed 200 OK in 67ms (Views: 60.9ms | ActiveRecord: 0.2ms | Allocations: 47659)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 09:02:00 -0500
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"Nombre largo"}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.6ms | Allocations: 719)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 814)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 3110)
+Completed 422 Unprocessable Entity in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 4691)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2023-12-13 09:05:33 -0500
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.9ms | Allocations: 990)
+  Rendered users/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1103)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 14954)
+Completed 200 OK in 13ms (Views: 9.6ms | ActiveRecord: 0.4ms | Allocations: 18017)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 09:05:34 -0500
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"Nombre largo"}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.6ms | Allocations: 606)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 693)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2878)
+Completed 422 Unprocessable Entity in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 4130)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-12-13 09:05:41 -0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 204)
+  Rendered users/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1950)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 4270)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.1ms | Allocations: 4723)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2023-12-13 09:05:45 -0500
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.8ms | Allocations: 846)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 936)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 3129)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 3443)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 09:05:51 -0500
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"Nombre largo"}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.6ms | Allocations: 601)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 688)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 2873)
+Completed 422 Unprocessable Entity in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 4000)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-12-13 09:05:53 -0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered users/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 932)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 3124)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 3399)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-12-13 09:05:54 -0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered users/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 888)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 3080)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 3351)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-12-13 09:07:02 -0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.0ms | Allocations: 38)
+  Rendered users/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2701)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 16641)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.3ms | Allocations: 18170)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2023-12-13 09:07:06 -0500
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.7ms | Allocations: 863)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 954)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 3146)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 3454)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 09:07:08 -0500
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"Nombre largo"}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.6ms | Allocations: 604)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 691)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2876)
+Completed 422 Unprocessable Entity in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 4104)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2023-12-13 09:07:32 -0500
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.8ms | Allocations: 1004)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1117)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 15041)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.3ms | Allocations: 18030)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 09:07:36 -0500
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"Nombre largo"}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.5ms | Allocations: 592)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 679)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 2863)
+Completed 422 Unprocessable Entity in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 4101)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 09:07:44 -0500
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"7Nombre largo"}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.6ms | Allocations: 598)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 685)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2869)
+Completed 422 Unprocessable Entity in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 3934)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 09:07:48 -0500
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"7No"}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.4ms | Allocations: 582)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 669)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 2853)
+Completed 422 Unprocessable Entity in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 3925)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-12-13 09:08:00 -0500
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"7adsf"}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 0.4ms | Allocations: 582)
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 669)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 2853)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 3907)
+
+

@@ -13,6 +13,6 @@ class User < ApplicationRecord
     end
     private
     def is_letter(string)
-        !string.match(/[a-zA-Z]/).nil?          
+        string.match(/[[:alpha:]]/).nil?          
     end
 end
