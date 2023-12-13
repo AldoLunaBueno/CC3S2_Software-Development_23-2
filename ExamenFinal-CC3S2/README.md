@@ -1,0 +1,84 @@
+# Examen Final de CC3S2
+
+
+## Parte 1
+
+### Apartado 1. Git: conflicto de fusión
+
+### Apartado 2. Validaciones del modelo
+
+Tenemos el siguiente modelo User:
+
+```ruby
+class User < ActiveRecord::Base
+  validates :username, :presence => true
+  validate :username_format
+end
+```
+
+**Pregunta 1**
+
+¿Qué pasa si tenemos @user sin nombre de usuario y llamamos a `@user.valid?`? ¿Qué guardará @user.save?
+
+**Respuesta**
+
+Si al crear nuestra instancia de User dejamos el campo :username como nil, lo que pasa es que la instancia no será almacenada en la base de datos del modelo debido al primer validador, que se interpone entre la instrucción del controlador @user.save y el modelo User. La instrucción @user.save guarda el objeto @user.
+
+
+![](sources/2023-12-13-08-07-55.png)
+
+**Pregunta 2**
+
+Implementa username_format. Para los propósitos, un nombre de usuario comienza 	con una letra y tiene como máximo 10 caracteres de largo. Recuerda, las validaciones personalizadas agregan un mensaje a la colección de errores.
+
+**Respuesta**
+
+Implementación del método:
+
+```ruby
+def username_format
+    if is_letter(username[0])
+        errors.add(:base, "El primer caracter del nombre de usuario no es una letra.")
+    end
+
+    if username.length > 10
+        errors.add(:base, "El nombre de usuario tiene más de 10 caracteres")
+    end
+end
+private
+def is_letter(string)
+    !string.match(/\A[a-zA-Z]*\z/).nil?          
+end
+```
+
+![](sources/2023-12-13-08-34-23.png)
+
+Esta es [la carpeta de la aplicación](./parte1apartado2/) que creamos para probar el código, y este es el código completo:
+
+```ruby
+class User < ApplicationRecord
+    validates :username, :presence => true
+    validate :username_format
+
+    def username_format
+        if is_letter(username[0])
+            errors.add(:base, "El primer caracter del nombre de usuario no es una letra.")
+        end
+
+        if username.length > 10
+            errors.add(:base, "El nombre de usuario tiene más de 10 caracteres")
+        end
+    end
+    private
+    def is_letter(string)
+        !string.match(/[a-zA-Z]/).nil?          
+    end
+end
+```
+
+### Apartado 3. Filtros del controlador
+
+
+
+## Parte 2
+
