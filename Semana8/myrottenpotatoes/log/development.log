@@ -1943,3 +1943,60 @@ Processing by MoviesController#show as HTML
 Completed 200 OK in 31ms (Views: 16.2ms | ActiveRecord: 0.1ms | Allocations: 4949)
 
 
+Started GET "/movies/" for 127.0.0.1 at 2023-12-13 02:49:57 -0500
+Processing by MoviesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:11
+  Rendered movies/index.html.erb within layouts/application (Duration: 33.1ms | Allocations: 2952)
+  Rendered layout layouts/application.html.erb (Duration: 68.2ms | Allocations: 6732)
+Completed 200 OK in 99ms (Views: 96.3ms | ActiveRecord: 0.7ms | Allocations: 8214)
+
+
+Started GET "/movies/" for 127.0.0.1 at 2023-12-13 02:50:11 -0500
+Processing by MoviesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:11
+  Rendered movies/index.html.erb within layouts/application (Duration: 28.7ms | Allocations: 2318)
+  Rendered layout layouts/application.html.erb (Duration: 60.5ms | Allocations: 5601)
+Completed 200 OK in 83ms (Views: 81.6ms | ActiveRecord: 0.4ms | Allocations: 6104)
+
+
+Started GET "/movies/1" for 127.0.0.1 at 2023-12-13 02:50:29 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/movies_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering movies/show.html.erb within layouts/application
+  Rendered movies/show.html.erb within layouts/application (Duration: 16.7ms | Allocations: 521)
+  Rendered layout layouts/application.html.erb (Duration: 48.7ms | Allocations: 3755)
+Completed 200 OK in 81ms (Views: 62.0ms | ActiveRecord: 0.2ms | Allocations: 4841)
+
+
+Started GET "/movies/" for 127.0.0.1 at 2023-12-13 04:30:33 -0500
+Processing by MoviesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:11
+  Rendered movies/index.html.erb within layouts/application (Duration: 34.3ms | Allocations: 2453)
+  Rendered layout layouts/application.html.erb (Duration: 66.4ms | Allocations: 5696)
+Completed 200 OK in 81ms (Views: 70.4ms | ActiveRecord: 4.6ms | Allocations: 6270)
+
+
+Started GET "/movies/1" for 127.0.0.1 at 2023-12-13 04:30:37 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/movies_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering movies/show.html.erb within layouts/application
+  Rendered movies/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | Allocations: 3443)
+Completed 200 OK in 39ms (Views: 22.6ms | ActiveRecord: 0.2ms | Allocations: 4481)
+
+
