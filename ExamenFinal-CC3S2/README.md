@@ -86,6 +86,10 @@ Y también podemos ver cómo funciona en el navegador:
 
 ### Apartado 3. Filtros del controlador
 
+**Pregunta**
+
+Para el modelo de User, digamos que queremos verificar si @user era administrador de todos los métodos en AdminController. Completa el método before_filter:check_admin a continuación que verifica si el campo de administrador en @user es verdadero. De lo contrario, redirija a la página admin_login con un mensaje que indica acceso restringido.
+
 ```
 ```
 
